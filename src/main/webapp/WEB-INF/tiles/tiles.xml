@@ -18,9 +18,47 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp" />
 	</definition>
 	
-<!-- 	<definition name="admin/users" extends="adminBaseTemplate"> -->
-<!-- 		<put-attribute name="title" value="Rent A Car | Administrator panel | Users" /> -->
-<!-- 		<put-attribute name="body" value="/WEB-INF/views/admin/users.jsp" /> -->
-<!-- 	</definition> -->
+	<definition name="admin/charts" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Admin | Charts" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/charts.jsp" />
+	</definition>
+	
+	<definition name="admin/tables" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Admin | Tables" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/tables.jsp" />
+	</definition>
+	
+	<definition name="admin/forms" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Admin | Forms" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/forms.jsp" />
+	</definition>
+	
+	<definition name="admin/typography" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Admin | Typography" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/typography.jsp" />
+	</definition>
+	
+	<definition name="admin/bootstrap-elements" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Admin | Bootstrap Elements" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/bootstrap-elements.jsp" />
+	</definition>
+	
+	<definition name="admin/bootstrap-grid" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Admin | Bootstrap Grid" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/bootstrap-grid.jsp" />
+	</definition>
+	
+	<definition name="admin/blank-page" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Admin | Blank Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/blank-page.jsp" />
+	</definition>
+
+	<!-- home.jsp -->
+	<definition name="home" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value=""/>
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
 	
 </tiles-definitions>

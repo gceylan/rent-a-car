@@ -1,28 +1,56 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/includes/taglibs.jsp"%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<link type="text/css" rel="stylesheet"  href="<spring:url value="/resources/styles/admin.css"/>"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title><tiles:insertAttribute name="title" ignore="true" /></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title><tiles:insertAttribute name="title" /></title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="../resources/sb-admin/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Add custom CSS here -->
+	<link href="../resources/sb-admin/css/sb-admin.css" rel="stylesheet">
+	<link rel="stylesheet" href="../resources/sb-admin/font-awesome/css/font-awesome.min.css">
+	<!-- Page Specific CSS -->
+	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
 </head>
 <body>
-<table id="mainTable">
-    <tr>
-        <td>
-        	<tiles:insertAttribute name="header" />
-        </td>
-    </tr>
-    <tr>
-        <td valign="top">
-        	<tiles:insertAttribute name="body" />
-        </td>
-    </tr>
-</table>
+
+	<div id="wrapper">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<tiles:insertAttribute name="header" />
+
+			<tiles:insertAttribute name="menu" />
+		</nav>
+
+		<div id="page-wrapper">
+			<tiles:insertAttribute name="body" />
+		</div>
+
+	</div>
+	
+	<!-- Bootstrap core JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../resources/sb-admin/js/bootstrap.js"></script>
+    <!-- Page Specific Plugins -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+    <script src="../resources/sb-admin/js/morris/chart-data-morris.js"></script>
+    <script src="../resources/sb-admin/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="../resources/sb-admin/js/tablesorter/tables.js"></script>
+
+    <!--[if lte IE 8]><script src="../resources/js/excanvas.min.js"></script><![endif]-->
+	<script src="../resources/js/flot/jquery.flot.js"></script>
+	<script src="../resources/js/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="../resources/js/flot/jquery.flot.resize.js"></script>
+	<script src="../resources/js/flot/jquery.flot.pie.js"></script>
+	<script src="../resources/js/flot/chart-data-flot.js"></script>
+
 </body>
 </html>

@@ -36,4 +36,52 @@ public class HomeController {
 		return "home";
 	}
 	
+	/**
+	 * Tiles Test
+	 * */
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String adminRedirect() {
+		return "redirect:/admin/main";
+	}
+	
+	@RequestMapping(value = "/admin/main", method = RequestMethod.GET)
+	public String adminPage() {
+		return "admin/main";
+	}
+	
+	@RequestMapping(value = "/admin/charts", method = RequestMethod.GET)
+	public String adminCharts() {
+		return "admin/charts";
+	}
+	
+	@RequestMapping(value = "/admin/tables", method = RequestMethod.GET)
+	public String adminTables() {
+		return "admin/tables";
+	}
+	
+	@RequestMapping(value = "/admin/forms", method = RequestMethod.GET)
+	public String adminForms() {
+		return "admin/forms";
+	}
+	
+	@RequestMapping(value = "/admin/typography", method = RequestMethod.GET)
+	public String adminTypography() {
+		return "admin/typography";
+	}
+	
+	@RequestMapping(value = "/admin/bootstrap-elements", method = RequestMethod.GET)
+	public String adminBootstrapElements() {
+		return "admin/bootstrap-elements";
+	}
+	
+	@RequestMapping(value = "/admin/bootstrap-grid", method = RequestMethod.GET)
+	public String adminBootstrapGrid() {
+		return "admin/bootstrap-grid";
+	}
+	
+	@RequestMapping(value = "/admin/blank-page", method = RequestMethod.GET)
+	public String adminBlankPage() {
+		return "admin/blank-page";
+	}
 }
