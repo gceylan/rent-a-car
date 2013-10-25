@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	<!-- Admin stuff -->
+
+	<definition name="adminBaseTemplate" template="/WEB-INF/views/admin/template/layout.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/admin/template/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/admin/template/menu.jsp"/>
+		<put-attribute name="body" value=""/>
+	</definition>
+	
+	<definition name="admin/main" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Administrator panel" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/main.jsp" />
+	</definition>
+	
+<!-- 	<definition name="admin/users" extends="adminBaseTemplate"> -->
+<!-- 		<put-attribute name="title" value="Rent A Car | Administrator panel | Users" /> -->
+<!-- 		<put-attribute name="body" value="/WEB-INF/views/admin/users.jsp" /> -->
+<!-- 	</definition> -->
+	
+</tiles-definitions>
