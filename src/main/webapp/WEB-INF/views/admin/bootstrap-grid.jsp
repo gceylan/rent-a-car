@@ -1,25 +1,3 @@
-
-<div class="row">
-	<div class="col-lg-12">
-		<h1>
-			Bootstrap Grid <small>Built-In Bootstrap Grid</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="index.html"><i class="icon-dashboard"></i>
-					Dashboard</a></li>
-			<li class="active"><i class="icon-wrench"></i> Bootstrap Grid</li>
-		</ol>
-		<div class="alert alert-info alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"
-				aria-hidden="true">&times;</button>
-			Be sure to visit <a class="alert-link"
-				href="http://getbootstrap.com/css/#grid" target="_blank">Bootstrap's
-				grid documentation</a> for more information.
-		</div>
-	</div>
-</div>
-<!-- /.row -->
-
 <div class="row">
 	<div class="col-lg-12 text-center">
 		<div class="panel panel-default">

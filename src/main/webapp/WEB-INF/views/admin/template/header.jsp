@@ -4,5 +4,5 @@
 		<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 		<span class="icon-bar"></span> <span class="icon-bar"></span>
 	</button>
-	<a class="navbar-brand" href="${ pageContext.request.contextPath }/admin/main">Rent A Car</a>
+	<a class="navbar-brand" href="${ pageContext.request.contextPath }/admin">Rent A Car</a>
 </div>

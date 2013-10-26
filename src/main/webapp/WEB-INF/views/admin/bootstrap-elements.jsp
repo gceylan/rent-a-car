@@ -1,28 +1,5 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1>
-			Bootstrap Elements <small>Built-In Bootstrap Elements</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="index.html"><i class="icon-dashboard"></i>
-					Dashboard</a></li>
-			<li class="active"><i class="icon-desktop"></i> Bootstrap
-				Elements</li>
-		</ol>
-		<div class="alert alert-info alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"
-				aria-hidden="true">&times;</button>
-			Start Bootstrap recommends that you have an in-depth understanding of
-			the Bootstrap framework before working with this template. Visit <a
-				class="alert-link" href="http://getbootstrap.com/" target="_blank">http://getbootstrap.com/</a>
-			for complete documentation.
-		</div>
-	</div>
-</div>
-<!-- /.row -->
-
-<div class="row">
-	<div class="col-lg-12">
 		<h1 id="buttons" class="page-header">Buttons</h1>
 	</div>
 </div>

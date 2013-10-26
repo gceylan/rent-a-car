@@ -1,21 +1,4 @@
 <div class="row">
-	<div class="col-lg-12">
-		<h1>
-			Typograhy <small>Text and Headers</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="index.html"><i class="icon-dashboard"></i>
-					Dashboard</a></li>
-			<li class="active"><i class="icon-font"></i> Typograhy</li>
-		</ol>
-		<div class="alert alert-info alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"
-				aria-hidden="true">&times;</button>
-			Visit <a class="alert-link" target="_blank"
-				href="http://getbootstrap.com/css/#type">Bootstrap's Typography
-				Documentation</a> for more information.
-		</div>
-	</div>
 	<div class="col-lg-4">
 		<h1>
 			Heading 1 <small>Sub-heading</small>

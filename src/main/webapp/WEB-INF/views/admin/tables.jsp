@@ -1,25 +1,4 @@
 <div class="row">
-	<div class="col-lg-12">
-		<h1>
-			Tables <small>Sort Your Data</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="index.html"><i class="icon-dashboard"></i>
-					Dashboard</a></li>
-			<li class="active"><i class="icon-table"></i> Tables</li>
-		</ol>
-		<div class="alert alert-info alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"
-				aria-hidden="true">&times;</button>
-			We're using <a class="alert-link" href="http://tablesorter.com/docs/">Tablesorter
-				2.0</a> for the sort function on the tables. Read the documentation for
-			more customization options or feel free to use something else!
-		</div>
-	</div>
-</div>
-<!-- /.row -->
-
-<div class="row">
 	<div class="col-lg-6">
 		<h2>Bordered Table</h2>
 		<div class="table-responsive">

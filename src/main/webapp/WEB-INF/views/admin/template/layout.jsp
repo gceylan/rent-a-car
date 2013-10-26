@@ -1,12 +1,13 @@
 <%@ include file="/WEB-INF/includes/taglibs.jsp"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<title><tiles:insertAttribute name="title" /></title>
 
@@ -22,17 +23,15 @@
 <body>
 
 	<div id="wrapper">
-
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<tiles:insertAttribute name="header" />
-
 			<tiles:insertAttribute name="menu" />
 		</nav>
 
 		<div id="page-wrapper">
+			<tiles:insertAttribute name="sub-menu" />
 			<tiles:insertAttribute name="body" />
 		</div>
-
 	</div>
 	
 	<!-- Bootstrap core JavaScript -->

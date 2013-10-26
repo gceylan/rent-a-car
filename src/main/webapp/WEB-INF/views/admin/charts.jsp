@@ -1,29 +1,5 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1>
-			Charts <small>Display Your Data</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="index.html"><i class="icon-dashboard"></i>
-					Dashboard</a></li>
-			<li class="active"><i class="icon-bar-chart"></i> Charts</li>
-		</ol>
-		<div class="alert alert-info alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert"
-				aria-hidden="true">&times;</button>
-			There are two options for charts: <a
-				href="http://www.flotcharts.org/" target="_blank" class="alert-link">Flot
-				charts</a> and <a href="http://www.oesmith.co.uk/morris.js/"
-				class="alert-link" target="_blank">morris.js</a>. Choose which one
-			best suits your needs, and make sure to master the documentation to
-			get the most out of these charts!
-		</div>
-	</div>
-</div>
-<!-- /.row -->
-
-<div class="row">
-	<div class="col-lg-12">
 		<h2>Flot Charts</h2>
 		<div class="panel panel-primary">
 			<div class="panel-heading">
