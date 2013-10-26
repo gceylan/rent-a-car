@@ -53,14 +53,13 @@
 		<put-attribute name="title" value="Rent A Car | Admin | Blank Page" />
 		<put-attribute name="body" value="/WEB-INF/views/admin/blank-page.jsp" />
 	</definition>
+	
+	<!-- login -->
+	<definition name="login" template="/WEB-INF/views/login.jsp">
+	</definition>
 
-	<!-- home.jsp -->
-	<definition name="home" extends="adminBaseTemplate">
-		<put-attribute name="title" value="Home" />
-		<put-attribute name="header" value="" />
-		<put-attribute name="menu" value=""/>
-		<put-attribute name="sub-menu" value=""/>
-		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	<!-- home -->
+	<definition name="home" template="/WEB-INF/views/home.jsp">
 	</definition>
 	
 </tiles-definitions>

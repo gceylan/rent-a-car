@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.gceylan.rentacar.helper.Menu;
-import com.gceylan.rentacar.helper.Navigation;
-import com.gceylan.rentacar.helper.SubMenu;
+import com.gceylan.rentacar.util.Menu;
+import com.gceylan.rentacar.util.Navigation;
+import com.gceylan.rentacar.util.SubMenu;
 
 @Controller
 @RequestMapping("/admin")

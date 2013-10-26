@@ -44,7 +44,7 @@
     <script src="../resources/sb-admin/js/tablesorter/jquery.tablesorter.js"></script>
     <script src="../resources/sb-admin/js/tablesorter/tables.js"></script>
 
-    <!--[if lte IE 8]><script src="../resources/js/excanvas.min.js"></script><![endif]-->
+    <!--[if lte IE 8]><script src="/rentacar/resources/js/excanvas.min.js"></script><![endif]-->
 	<script src="../resources/js/flot/jquery.flot.js"></script>
 	<script src="../resources/js/flot/jquery.flot.tooltip.min.js"></script>
 	<script src="../resources/js/flot/jquery.flot.resize.js"></script>

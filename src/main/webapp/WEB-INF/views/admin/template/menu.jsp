@@ -6,24 +6,6 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
-<%-- 		<li class="active"><a href="${contextPath}/main"><iclass="icon-dashboard"></i> Dashboard</a></li> --%>
-<%-- 		<li><a href="${contextPath}/charts"><i class="icon-bar-chart"></i>Charts</a></li> --%>
-<%-- 		<li><a href="${contextPath}/tables"><i class="icon-table"></i> Tables</a></li> --%>
-<%-- 		<li><a href="${contextPath}/forms"><i class="icon-edit"></i> Forms</a></li> --%>
-<%-- 		<li><a href="${contextPath}/typography"><i class="icon-font"></i>Typography</a></li> --%>
-<%-- 		<li><a href="${contextPath}/bootstrap-elements"><i class="icon-desktop"></i>Bootstrap Elements</a></li> --%>
-<%-- 		<li><a href="${contextPath}/bootstrap-grid"><i class="icon-wrench"></i>Bootstrap Grid</a></li> --%>
-<%-- 		<li><a href="${contextPath}/blank-page"><i class="icon-file-alt"></i>Blank Page</a></li> --%>
-<!-- 		<li class="dropdown"><a href="#" class="dropdown-toggle" -->
-<!-- 			data-toggle="dropdown"><i class="icon-collapse"></i> Dropdown <b -->
-<!-- 				class="caret"></b></a> -->
-<!-- 			<ul class="dropdown-menu"> -->
-<!-- 				<li><a href="#">Dropdown Item</a></li> -->
-<!-- 				<li><a href="#">Another Item</a></li> -->
-<!-- 				<li><a href="#">Third Item</a></li> -->
-<!-- 				<li><a href="#">Last Item</a></li> -->
-<!-- 			</ul> -->
-<!-- 		</li> -->
 		<c:forEach items="${ navigation }" var="nav">
 			<c:set var="menu" value="${ nav.menu }" />
 			<c:set var="subMenus" value="${ nav.subMenus }" />
@@ -95,7 +77,7 @@
 						class="badge">7</span></a></a></li>
 				<li><a href="#"><i class="icon-gear"></i> Settings</a></li>
 				<li class="divider"></li>
-				<li><a href="#"><i class="icon-power-off"></i> Log Out</a></li>
+				<li><a href="${ pageContext.request.contextPath }/logout"><i class="icon-power-off"></i> Log Out</a></li>
 			</ul></li>
 	</ul>
 </div>
