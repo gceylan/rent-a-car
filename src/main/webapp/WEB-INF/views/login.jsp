@@ -17,8 +17,8 @@
 						<legend>Sisteme Giriş</legend>
 						
 						<c:if test="${ error }">
-							<div class="alert alert-error">
-								<a class="close" data-dismiss="alert" href="#">×</a><spring:message code="loginform.loginerror"/>
+							<div class="alert alert-danger">
+								Geçersin Kullanıcı Adı ve/veya Parola
 							</div>
 						</c:if>
 						
