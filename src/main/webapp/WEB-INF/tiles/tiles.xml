@@ -57,6 +57,24 @@
 	<!-- login -->
 	<definition name="login" template="/WEB-INF/views/login.jsp">
 	</definition>
+	
+	<!-- list all user page -->
+	<definition name="admin/users/list" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | New User" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/users/list.jsp" />
+	</definition>
+	
+	<!-- add new user page -->
+	<definition name="admin/users/new" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | New User" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/users/new.jsp" />
+	</definition>
+	
+	<!-- edit user page -->
+	<definition name="admin/users/edit" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | New User" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/users/edit.jsp" />
+	</definition>
 
 	<!-- home -->
 	<definition name="home" template="/WEB-INF/views/home.jsp">

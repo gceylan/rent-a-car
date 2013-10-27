@@ -13,7 +13,7 @@
 			
 			<c:if test="${ selectedNav.menu.name ne 'Dashboard' }">
 				<li><a href="${ pageContext.request.contextPath }/admin"><i class="icon-dashboard"></i> Dashboard</a></li>
-<%-- 				<li class="active"><a href="${ pageContext.request.contextPath }/admin/${ selectedNav.menu.url }"><i class="${ selectedNav.menu.icon }"></i> ${ selectedNav.menu.name }</a></li> --%>
+<%-- 				<li class="active"><a href="${ pageContext.request.contextPath }/${ selectedNav.menu.url }"><i class="${ selectedNav.menu.icon }"></i> ${ selectedNav.menu.name }</a></li> --%>
 				<li class="active"><i class="${ selectedNav.menu.icon }"></i> ${ selectedNav.menu.name }</li>
 			</c:if>
 			

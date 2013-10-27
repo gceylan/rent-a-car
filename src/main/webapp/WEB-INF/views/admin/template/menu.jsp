@@ -1,12 +1,12 @@
 <%@ include file="/WEB-INF/includes/taglibs.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set var="contextPath" value="${ pageContext.request.contextPath }/admin" />
+<c:set var="contextPath" value="${ pageContext.request.contextPath }" />
 
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
-		<c:forEach items="${ navigation }" var="nav">
+		<c:forEach items="${ navigations }" var="nav">
 			<c:set var="menu" value="${ nav.menu }" />
 			<c:set var="subMenus" value="${ nav.subMenus }" />
 			
@@ -70,7 +70,7 @@
 			</ul></li>
 		<li class="dropdown user-dropdown"><a href="#"
 			class="dropdown-toggle" data-toggle="dropdown"><i
-				class="icon-user"></i> John Smith <b class="caret"></b></a>
+				class="icon-user"></i> ${ test } <b class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<li><a href="#"><i class="icon-user"></i> Profile</a></li>
 				<li><a href="#"><i class="icon-envelope"></i> Inbox <span

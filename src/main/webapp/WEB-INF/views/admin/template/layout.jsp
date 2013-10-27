@@ -12,11 +12,11 @@
 	<title><tiles:insertAttribute name="title" /></title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="../resources/sb-admin/css/bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/sb-admin/css/bootstrap.css" rel="stylesheet">
 
 	<!-- Add custom CSS here -->
-	<link href="../resources/sb-admin/css/sb-admin.css" rel="stylesheet">
-	<link rel="stylesheet" href="../resources/sb-admin/font-awesome/css/font-awesome.min.css">
+	<link href="${pageContext.request.contextPath}/resources/sb-admin/css/sb-admin.css" rel="stylesheet">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/sb-admin/font-awesome/css/font-awesome.min.css">
 	<!-- Page Specific CSS -->
 	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
 </head>
@@ -36,20 +36,20 @@
 	
 	<!-- Bootstrap core JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="../resources/sb-admin/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/sb-admin/js/bootstrap.js"></script>
     <!-- Page Specific Plugins -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-    <script src="../resources/sb-admin/js/morris/chart-data-morris.js"></script>
-    <script src="../resources/sb-admin/js/tablesorter/jquery.tablesorter.js"></script>
-    <script src="../resources/sb-admin/js/tablesorter/tables.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/sb-admin/js/morris/chart-data-morris.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/sb-admin/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/sb-admin/js/tablesorter/tables.js"></script>
 
     <!--[if lte IE 8]><script src="/rentacar/resources/js/excanvas.min.js"></script><![endif]-->
-	<script src="../resources/js/flot/jquery.flot.js"></script>
-	<script src="../resources/js/flot/jquery.flot.tooltip.min.js"></script>
-	<script src="../resources/js/flot/jquery.flot.resize.js"></script>
-	<script src="../resources/js/flot/jquery.flot.pie.js"></script>
-	<script src="../resources/js/flot/chart-data-flot.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/flot/jquery.flot.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/flot/jquery.flot.resize.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/flot/jquery.flot.pie.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/flot/chart-data-flot.js"></script>
 
 </body>
 </html>
