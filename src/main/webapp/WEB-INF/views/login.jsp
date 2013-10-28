@@ -27,7 +27,8 @@
 								<input type="text" class="form-control"
 									id="username" required="required"
 									name="j_username"
-									placeholder="Kullanıcı Adı" />
+									placeholder="Kullanıcı Adı"
+									value="gceylan" />
 							</div>
 							<p class="help-block"></p>
 						</div>
@@ -37,7 +38,8 @@
 								<input type="password" class="form-control"
 									id="password" required="required"
 									name="j_password"
-									placeholder="Parola" />
+									placeholder="Parola"
+									value="merhaba" />
 							</div>
 							<p class="help-block"></p>
 						</div>

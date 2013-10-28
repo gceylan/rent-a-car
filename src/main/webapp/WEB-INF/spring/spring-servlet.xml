@@ -64,7 +64,7 @@
 	</bean>
 	
 	<mvc:interceptors>
-  		<bean class="com.gceylan.rentacar.MenuInterceptor" />
+  		<bean class="com.gceylan.rentacar.util.MenuInterceptor" />
 	</mvc:interceptors> 
 
 </beans>

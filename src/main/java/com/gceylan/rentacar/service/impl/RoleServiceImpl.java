@@ -11,6 +11,7 @@ import com.gceylan.rentacar.domain.Role;
 import com.gceylan.rentacar.service.RoleService;
 
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService {
 	
 	@Autowired

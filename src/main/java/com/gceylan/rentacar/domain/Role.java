@@ -17,12 +17,19 @@ public class Role {
 	@GeneratedValue
 	@Column(name = "id")
 	private Integer id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@ManyToMany(mappedBy = "roles")
 	private List<User> users;
+
+	public Role() {
+	}
+
+	public Role(String name) {
+		this.name = name;
+	}
 
 	public Integer getId() {
 		return id;
@@ -46,6 +53,21 @@ public class Role {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+	
+	/*
+	 * eğer toString metoduna, users nesne değişkenini de
+	 * eklemek istersem, toString çağrıldığında hibernate bağırır.
+	 * çünkü users nesne değişkeni @ManyToMany ve @ManyToMany
+	 * varsayılanda FetchType' ı LAZY dir. Yani, bir role nesnesini
+	 * veritabanından çekersem, users listesinin içi dolmaz. User nesneleri
+	 * veritabanında join ile bağlanıp getirilmez!!!
+	 * 
+	 * */
+
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", name=" + name + "]";
 	}
 
 }

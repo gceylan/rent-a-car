@@ -11,6 +11,7 @@ import com.gceylan.rentacar.domain.User;
 import com.gceylan.rentacar.service.UserService;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 	
 	@Autowired

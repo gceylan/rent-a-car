@@ -1,4 +1,4 @@
-package com.gceylan.rentacar;
+package com.gceylan.rentacar.util;
 
 import java.util.ArrayList;
 
@@ -7,10 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.gceylan.rentacar.util.Menu;
-import com.gceylan.rentacar.util.Navigation;
-import com.gceylan.rentacar.util.SubMenu;
 
 public class MenuInterceptor implements HandlerInterceptor {
 
@@ -29,6 +25,7 @@ public class MenuInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 
+		// example uri: /rentacar/admin/users/list
 		String uri = request.getRequestURI();
 
 		if (uri.contains("/admin")) {
@@ -43,6 +40,13 @@ public class MenuInterceptor implements HandlerInterceptor {
 						"Statistics Overview",
 						"Welcome to SB Admin by Start Bootstrap! Feel free to use this template for your admin needs! We are using a few different plugins to handle the dynamic tables and charts, so make sure you check out the necessary documentation links provided.",
 						"admin/main");
+				Menu users = new Menu(
+						"icon-user",
+						"Kullanıcılar",
+						"Tüm Kullanıcılar",
+						"Yeni Kullanıcı Ekle/Sil/Güncelle",
+						"admin/users/list"
+						);
 				Menu m2 = new Menu(
 						"icon-bar-chart",
 						"Charts",
@@ -83,6 +87,12 @@ public class MenuInterceptor implements HandlerInterceptor {
 						"A Blank Slate", "", "admin/blank-page");
 
 				Navigation nav1 = new Navigation(m1, new ArrayList<SubMenu>());
+				
+				ArrayList<SubMenu> navUserSubMenus = new ArrayList<SubMenu>();
+				navUserSubMenus.add(new SubMenu("", "Yeni Kullanıcı Ekle", "admin/users/new"));
+				
+				Navigation navUsers = new Navigation(users, navUserSubMenus);
+				
 				Navigation nav2 = new Navigation(m2, new ArrayList<SubMenu>());
 				Navigation nav3 = new Navigation(m3, new ArrayList<SubMenu>());
 				Navigation nav4 = new Navigation(m4, new ArrayList<SubMenu>());
@@ -92,6 +102,7 @@ public class MenuInterceptor implements HandlerInterceptor {
 				Navigation nav8 = new Navigation(m8, new ArrayList<SubMenu>());
 
 				navigations.add(nav1);
+				navigations.add(navUsers);
 				navigations.add(nav2);
 				navigations.add(nav3);
 				navigations.add(nav4);
@@ -102,14 +113,49 @@ public class MenuInterceptor implements HandlerInterceptor {
 				
 				Navigation selectedNav = navigations.get(0);
 				
+				System.out.println("URI: " + uri);
+				
 				for (Navigation nav : navigations) {
-					if (uri.contains(nav.getMenu().getUrl())) {
-						selectedNav = navigations.get(navigations.indexOf(nav));
+					if (nav.getSubMenus().size() != 0) {
+						for (SubMenu subMenu : nav.getSubMenus()) {
+							if (uri.contains(subMenu.getUrl())) {
+								selectedNav = nav;
+								
+								String subMenuUrl = subMenu.getUrl();
+								
+								/*
+								 * request /admin/users/new ise,
+								 * seçilen menü users menüsü, ve sub-menu.jsp de
+								 * görüntülenecek bilgilendirme metini,
+								 * Yeni Kullanıcı Ekle olarak güncellenecek.
+								 * 
+								 * selectedNav request' e eklendiğinden,
+								 * varsayılan değeri "Tüm Kullanıcılar olacaktır"
+								 * 
+								 * */
+								
+								/*
+								 * Aslında bu işlem her requestin gittiği controllerda da
+								 * yapılabilirdi. controler' ı daha sade tutmak için böyle
+								 * yapıldı.
+								 * 
+								 * */
+								if (subMenuUrl.contains("/users/new")) {
+									selectedNav.getMenu().setShortDescription("Yeni Kullanıcı Ekle");
+									selectedNav.getMenu().setDescription("Yeni Kullanıcı İçin Aşağıdaki Bilgileri Doldurun");
+								}
+							}
+						}
 					}
+					
+					if (uri.contains(nav.getMenu().getUrl()))
+						selectedNav = nav;
 				}
 				
+				System.out.println("selected nav url: " + selectedNav.getMenu().getUrl());
+				
 				request.setAttribute("selectedNav", selectedNav);
-				request.setAttribute("navigations", navigations);
+				request.getSession().setAttribute("navigations", navigations);
 			}
 		}
 

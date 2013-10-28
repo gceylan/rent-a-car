@@ -37,10 +37,9 @@ public class User {
 	private String email;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role",
-		joinColumns = {@JoinColumn(name = "user_id")},
-		inverseJoinColumns = {@JoinColumn(name = "role_id")}
-	)
+	@JoinTable(name = "user_role", 
+		joinColumns = { @JoinColumn(name = "user_id") }, 
+		inverseJoinColumns = { @JoinColumn(name = "role_id") })
 	private List<Role> roles;
 
 	@Column(name = "enabled")
@@ -141,6 +140,16 @@ public class User {
 
 	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
 		this.credentialsNonExpired = credentialsNonExpired;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password="
+				+ password + ", firstname=" + firstname + ", lastname="
+				+ lastname + ", email=" + email + ", roles=" + roles
+				+ ", enabled=" + enabled + ", accountNonLocked="
+				+ accountNonLocked + ", accountNonExpired=" + accountNonExpired
+				+ ", credentialsNonExpired=" + credentialsNonExpired + "]";
 	}
 
 }
