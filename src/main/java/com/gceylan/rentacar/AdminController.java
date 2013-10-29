@@ -1,20 +1,29 @@
 package com.gceylan.rentacar;
 
-import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.gceylan.rentacar.service.UserService;
+
 @Controller
 @RequestMapping("/admin")
-@SessionAttributes("navigation")
+@SessionAttributes("logonUser")
 public class AdminController {
 	
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public String adminRedirect(ModelMap model, HttpSession session) {
+	public String adminRedirect(ModelMap model, Principal principal) {
+		
+		model.addAttribute("logonUser", userService.getUserByUsername(principal.getName()));
+		
 		return "redirect:/admin/main";
 	}
 	
@@ -57,6 +66,10 @@ public class AdminController {
 	@RequestMapping(value = "/blank-page", method = RequestMethod.GET)
 	public String adminBlankPage(ModelMap model) {
 		return "admin/blank-page";
+	}
+	
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 
 }

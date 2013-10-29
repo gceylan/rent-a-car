@@ -29,6 +29,10 @@ public class UserDaoImpl implements UserDao {
 	public List<User> getAllUsers() {
 		return (List<User>) getSession().createCriteria(User.class).list();
 	}
+	
+	public void updateUser(User user) {
+		getSession().update(user);
+	}
 
 	public void deleteUser(Integer userId) {
 		getSession().delete(getUserById(userId));

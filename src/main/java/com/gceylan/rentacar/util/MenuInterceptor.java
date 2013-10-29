@@ -90,6 +90,8 @@ public class MenuInterceptor implements HandlerInterceptor {
 				
 				ArrayList<SubMenu> navUserSubMenus = new ArrayList<SubMenu>();
 				navUserSubMenus.add(new SubMenu("", "Yeni Kullanıcı Ekle", "admin/users/new"));
+				navUserSubMenus.add(new SubMenu("", "Kullanıcı Güncelle", "admin/users/edit"));
+				navUserSubMenus.add(new SubMenu("", "Profil Bilgileri", "admin/users/profil"));
 				
 				Navigation navUsers = new Navigation(users, navUserSubMenus);
 				
@@ -140,10 +142,22 @@ public class MenuInterceptor implements HandlerInterceptor {
 								 * yapıldı.
 								 * 
 								 * */
+								String shortDesc = "";
+								String desc = "";
+								
 								if (subMenuUrl.contains("/users/new")) {
-									selectedNav.getMenu().setShortDescription("Yeni Kullanıcı Ekle");
-									selectedNav.getMenu().setDescription("Yeni Kullanıcı İçin Aşağıdaki Bilgileri Doldurun");
+									shortDesc = "Yeni Kullanıcı Ekle";
+									desc = "Yeni Kullanıcı İçin Aşağıdaki Bilgileri Doldurun";
+								} else if (subMenuUrl.contains("/users/edit")) {
+									shortDesc = "Kullanıcı Güncelleniyor";
+									desc = "Kullanıcı Bilgilerini Değiştirebilirsiniz";
+								} else if (subMenuUrl.contains("/users/profil")) {
+									shortDesc = "Profil Detayları";
+									desc = "";
 								}
+								
+								selectedNav.getMenu().setShortDescription(shortDesc);
+								selectedNav.getMenu().setDescription(desc);
 							}
 						}
 					}

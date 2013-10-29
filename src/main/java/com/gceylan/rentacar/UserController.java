@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,15 +52,64 @@ public class UserController {
 			return model;
 		}
 		
-		if (user.getRoles().size() > 0) {
-			for (Role r : user.getRoles()) {
-				r.setId(roleService.getRoleByName(r.getName()).getId());
-			}
+		for (Role r : user.getRoles()) {
+			r.setId(roleService.getRoleByName(r.getName()).getId());
 		}
 		
-		System.out.println(user);
 		userService.addUser(user);
 		model.setViewName("redirect:/admin/users/list");
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public ModelAndView editUserPage(@PathVariable("id") Integer id,
+			ModelAndView model) {
+		
+		model.setViewName("admin/users/edit");
+		model.addObject("user", userService.getUserById(id));
+		model.addObject("allRoles", roleService.getAllRoles());
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public ModelAndView editUser(@PathVariable("id") Integer id,
+			@Valid User user, BindingResult result, ModelAndView model) {
+		
+		if (result.hasErrors()) {
+			model.setViewName("admin/users/edit");
+			model.addObject("allRoles", roleService.getAllRoles());
+			
+			return model;
+		}
+		
+		for (Role r : user.getRoles()) {
+			r.setId(roleService.getRoleByName(r.getName()).getId());
+		}
+		
+		userService.updateUser(user);
+		model.setViewName("redirect:/admin/users/list");
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/delete/{userId}", method = RequestMethod.GET)
+	public ModelAndView deleteUser(@PathVariable("userId") Integer userId,
+			ModelAndView model) {
+		
+		model.setViewName("redirect:/admin/users/list");
+		userService.deleteUser(userId);
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/profil/{username}", method = RequestMethod.GET)
+	public ModelAndView deleteUser(@PathVariable("username") String username,
+			ModelAndView model) {
+		
+		model.setViewName("admin/users/profil");
+		model.addObject("user", userService.getUserByUsername(username));
 		
 		return model;
 	}

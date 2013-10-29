@@ -22,30 +22,11 @@
 		</ol>
 	</div>
 	
-	<!-- şimdilik böyle idare etsin -->
-	<c:if test="${fn:length(selectedNav.subMenus) eq 0}">
-		<div class="col-lg-12">
-			<div class="alert alert-info alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				${ selectedNav.menu.description }
-			</div>
+	<div class="col-lg-12">
+		<div class="alert alert-info alert-dismissable">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			${ selectedNav.menu.description }
 		</div>
-	</c:if>
-	
-	<c:if test="${fn:length(selectedNav.subMenus) gt 0}">
-		<div class="col-lg-6">
-			<div class="alert alert-info alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				${ selectedNav.menu.description }
-			</div>
-		</div>
-	</c:if>
-		
-	<!-- SubMenu leri burada oluştur -->
-	<div class="col-lg-6" style="float: right;">
-		<c:forEach items="${ selectedNav.subMenus }" var="subMenu">
-			<a href="${ pageContext.request.contextPath }/${ subMenu.url }" class="btn btn-primary">${ subMenu.name }</a>
-		</c:forEach>
 	</div>
 </div>
 <!-- /.row -->

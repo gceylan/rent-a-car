@@ -70,7 +70,7 @@
 			</ul></li>
 		<li class="dropdown user-dropdown"><a href="#"
 			class="dropdown-toggle" data-toggle="dropdown"><i
-				class="icon-user"></i> ${ test } <b class="caret"></b></a>
+				class="icon-user"></i> ${ logonUser.firstname } ${ logonUser.lastname } <b class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<li><a href="#"><i class="icon-user"></i> Profile</a></li>
 				<li><a href="#"><i class="icon-envelope"></i> Inbox <span

@@ -54,16 +54,14 @@ public class Role {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-	
+
 	/*
-	 * eğer toString metoduna, users nesne değişkenini de
-	 * eklemek istersem, toString çağrıldığında hibernate bağırır.
-	 * çünkü users nesne değişkeni @ManyToMany ve @ManyToMany
-	 * varsayılanda FetchType' ı LAZY dir. Yani, bir role nesnesini
-	 * veritabanından çekersem, users listesinin içi dolmaz. User nesneleri
-	 * veritabanında join ile bağlanıp getirilmez!!!
-	 * 
-	 * */
+	 * eğer toString metoduna, users nesne değişkenini de eklemek istersem,
+	 * toString çağrıldığında hibernate bağırır. çünkü users nesne değişkeni
+	 * @ManyToMany ve @ManyToMany varsayılanda FetchType' ı LAZY dir. Yani, bir
+	 * role nesnesini veritabanından çekersem, users listesinin içi dolmaz. User
+	 * nesneleri veritabanında join ile bağlanıp getirilmez!!!
+	 */
 
 	@Override
 	public String toString() {

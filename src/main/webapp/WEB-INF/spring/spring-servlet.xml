@@ -65,6 +65,12 @@
 	
 	<mvc:interceptors>
   		<bean class="com.gceylan.rentacar.util.MenuInterceptor" />
-	</mvc:interceptors> 
+	</mvc:interceptors>
+	
+	<!-- message source -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="ISO-8859-1" />	<!-- ISO-8859-1 -->
+	</bean>
 
 </beans>

@@ -11,6 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "user")
@@ -21,21 +26,29 @@ public class User {
 	@Column(name = "id")
 	private Integer id;
 
+	@NotEmpty
 	@Column(name = "username")
 	private String username;
 
+	@NotEmpty
+	@Size(min = 8, max = 20)
 	@Column(name = "password")
 	private String password;
 
+	@NotEmpty
 	@Column(name = "firstname")
 	private String firstname;
 
+	@NotEmpty
 	@Column(name = "lastname")
 	private String lastname;
 
+	@NotEmpty
+	@Email
 	@Column(name = "email")
 	private String email;
 
+	@NotNull
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", 
 		joinColumns = { @JoinColumn(name = "user_id") }, 
@@ -146,9 +159,9 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password="
 				+ password + ", firstname=" + firstname + ", lastname="
-				+ lastname + ", email=" + email + ", roles=" + roles
-				+ ", enabled=" + enabled + ", accountNonLocked="
-				+ accountNonLocked + ", accountNonExpired=" + accountNonExpired
+				+ lastname + ", email=" + email + ", enabled=" + enabled
+				+ ", accountNonLocked=" + accountNonLocked
+				+ ", accountNonExpired=" + accountNonExpired
 				+ ", credentialsNonExpired=" + credentialsNonExpired + "]";
 	}
 
