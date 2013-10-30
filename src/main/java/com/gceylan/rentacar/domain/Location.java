@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "location")
 public class Location {
@@ -15,9 +17,11 @@ public class Location {
 	@Column(name = "id")
 	private Integer id;
 
+	@NotEmpty
 	@Column(name = "name")
 	private String name;
 
+	@NotEmpty
 	@Column(name = "address")
 	private String address;
 
@@ -44,11 +48,4 @@ public class Location {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	@Override
-	public String toString() {
-		return "Location [id=" + id + ", name=" + name + ", address=" + address
-				+ "]";
-	}
-
 }
