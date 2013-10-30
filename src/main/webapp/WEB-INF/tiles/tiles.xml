@@ -81,6 +81,23 @@
 		<put-attribute name="title" value="Admin | User Profil" />
 		<put-attribute name="body" value="/WEB-INF/views/admin/users/profil.jsp" />
 	</definition>
+	
+	<!-- locations -->
+	<definition name="admin/locations/new" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | Yeni Hizmet Noktası Ekle" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/locations/new.jsp" />
+	</definition>
+	
+	<definition name="admin/locations/list" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | Hizmet Noktaları" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/locations/list.jsp" />
+	</definition>
+	
+	<definition name="admin/locations/edit" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | Hizmet Noktasını Güncelle" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/locations/edit.jsp" />
+	</definition>
+	<!-- end locations -->
 
 	<!-- home -->
 	<definition name="home" template="/WEB-INF/views/home.jsp">

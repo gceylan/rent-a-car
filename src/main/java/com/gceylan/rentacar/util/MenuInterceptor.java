@@ -47,6 +47,13 @@ public class MenuInterceptor implements HandlerInterceptor {
 						"Yeni Kullanıcı Ekle/Sil/Güncelle",
 						"admin/users/list"
 						);
+				Menu locations = new Menu(
+						"icon-road",
+						"Hizmet Noktaları",
+						"Tüm Hizmet Noktaları",
+						"Yeni Hizmet Noktası Ekle/Sil/Güncelle",
+						"admin/locations/list"
+						);
 				Menu m2 = new Menu(
 						"icon-bar-chart",
 						"Charts",
@@ -88,12 +95,20 @@ public class MenuInterceptor implements HandlerInterceptor {
 
 				Navigation nav1 = new Navigation(m1, new ArrayList<SubMenu>());
 				
+				// kullanıcılar menüsü
 				ArrayList<SubMenu> navUserSubMenus = new ArrayList<SubMenu>();
 				navUserSubMenus.add(new SubMenu("", "Yeni Kullanıcı Ekle", "admin/users/new"));
 				navUserSubMenus.add(new SubMenu("", "Kullanıcı Güncelle", "admin/users/edit"));
 				navUserSubMenus.add(new SubMenu("", "Profil Bilgileri", "admin/users/profil"));
 				
 				Navigation navUsers = new Navigation(users, navUserSubMenus);
+				
+				// hizmet noktaları menüsü
+				ArrayList<SubMenu> navLocationSubMenus = new ArrayList<SubMenu>();
+				navLocationSubMenus.add(new SubMenu("", "Yeni Hizmet Noktası Ekle", "admin/locations/new"));
+				navLocationSubMenus.add(new SubMenu("", "Hizmet Noktası Güncelle", "admin/locations/edit"));
+				
+				Navigation navLocations = new Navigation(locations, navLocationSubMenus);
 				
 				Navigation nav2 = new Navigation(m2, new ArrayList<SubMenu>());
 				Navigation nav3 = new Navigation(m3, new ArrayList<SubMenu>());
@@ -105,6 +120,7 @@ public class MenuInterceptor implements HandlerInterceptor {
 
 				navigations.add(nav1);
 				navigations.add(navUsers);
+				navigations.add(navLocations);
 				navigations.add(nav2);
 				navigations.add(nav3);
 				navigations.add(nav4);
@@ -154,6 +170,12 @@ public class MenuInterceptor implements HandlerInterceptor {
 								} else if (subMenuUrl.contains("/users/profil")) {
 									shortDesc = "Profil Detayları";
 									desc = "";
+								} else if (subMenuUrl.contains("/locations/new")) {
+									shortDesc = "Hizmet Noktası Ekle";
+									desc = "Hizmet Noktası için gerekli bilgileri doldurun";
+								} else if (subMenuUrl.contains("/locations/edit")) {
+									shortDesc = "Hizmet Noktası Güncelleniyor";
+									desc = "Hizmet Noktası Güncelleniyor";
 								}
 								
 								selectedNav.getMenu().setShortDescription(shortDesc);
