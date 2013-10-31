@@ -98,6 +98,23 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/locations/edit.jsp" />
 	</definition>
 	<!-- end locations -->
+	
+	<!-- cars -->
+	<definition name="admin/cars/new" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | Yeni Araç Ekle" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/cars/new.jsp" />
+	</definition>
+	
+	<definition name="admin/cars/list" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | Tüm Araçlar" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/cars/list.jsp" />
+	</definition>
+	
+	<definition name="admin/cars/edit" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | Araç Bilgisi Güncelle" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/cars/edit.jsp" />
+	</definition>
+	<!-- end cars -->
 
 	<!-- home -->
 	<definition name="home" template="/WEB-INF/views/home.jsp">

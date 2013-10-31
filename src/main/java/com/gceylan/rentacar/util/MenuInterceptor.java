@@ -54,6 +54,13 @@ public class MenuInterceptor implements HandlerInterceptor {
 						"Yeni Hizmet Noktası Ekle/Sil/Güncelle",
 						"admin/locations/list"
 						);
+				Menu cars = new Menu(
+						"icon-key",
+						"Araçlar",
+						"Tüm Araç Listesi",
+						"Yeni Bir Araç Kaydı Ekleyebilirsiniz...",
+						"admin/cars/list"
+						);
 				Menu m2 = new Menu(
 						"icon-bar-chart",
 						"Charts",
@@ -110,6 +117,13 @@ public class MenuInterceptor implements HandlerInterceptor {
 				
 				Navigation navLocations = new Navigation(locations, navLocationSubMenus);
 				
+				// araçlar menüsü
+				ArrayList<SubMenu> navCarSubMenus = new ArrayList<SubMenu>();
+				navCarSubMenus.add(new SubMenu("", "Yeni Bir Araç Ekle", "admin/cars/new"));
+				navCarSubMenus.add(new SubMenu("", "Araç Bilgilerini Güncelle", "admin/cars/edit"));
+				
+				Navigation navCars = new Navigation(cars, navCarSubMenus);
+				
 				Navigation nav2 = new Navigation(m2, new ArrayList<SubMenu>());
 				Navigation nav3 = new Navigation(m3, new ArrayList<SubMenu>());
 				Navigation nav4 = new Navigation(m4, new ArrayList<SubMenu>());
@@ -120,6 +134,7 @@ public class MenuInterceptor implements HandlerInterceptor {
 
 				navigations.add(nav1);
 				navigations.add(navUsers);
+				navigations.add(navCars);
 				navigations.add(navLocations);
 				navigations.add(nav2);
 				navigations.add(nav3);
@@ -176,6 +191,12 @@ public class MenuInterceptor implements HandlerInterceptor {
 								} else if (subMenuUrl.contains("/locations/edit")) {
 									shortDesc = "Hizmet Noktası Güncelleniyor";
 									desc = "Hizmet Noktası Güncelleniyor";
+								} else if (subMenuUrl.contains("/cars/new")) {
+									shortDesc = "Yeni Bir Araç Ekle";
+									desc = "Yeni Araç Ekle";
+								} else if (subMenuUrl.contains("/cars/edit")) {
+									shortDesc = "Araç Güncelle";
+									desc = "Aracı Güncelle";
 								}
 								
 								selectedNav.getMenu().setShortDescription(shortDesc);
