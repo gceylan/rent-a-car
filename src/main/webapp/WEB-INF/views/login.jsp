@@ -39,7 +39,7 @@
 									id="password" required="required"
 									name="j_password"
 									placeholder="Parola"
-									value="merhaba" />
+									value="12345678" />
 							</div>
 							<p class="help-block"></p>
 						</div>

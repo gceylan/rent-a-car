@@ -40,11 +40,13 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="" class="col-lg-3 control-label">Roller</label>
+				<label for="" class="col-lg-3 control-label">Rol</label>
 				<div class="col-lg-9">
-					<form:checkboxes path="roles" cssClass="checkbox-inline"
+					<form:radiobuttons path="role" cssClass="checkbox-inline"
 						items="${ allRoles }" itemValue="name" itemLabel="name" />
-					<p class="help-block"><form:errors path="roles" /></p>
+<%-- 					<form:checkboxes path="role" cssClass="checkbox-inline" --%>
+<%--  						items="${ allRoles }" itemValue="name" itemLabel="name" /> --%>
+					<p class="help-block"><form:errors path="role" /></p>
 				</div>
 			</div>
 			

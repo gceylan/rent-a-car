@@ -1,12 +1,14 @@
 package com.gceylan.rentacar.domain;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,8 +23,12 @@ public class Role {
 	@Column(name = "name")
 	private String name;
 
-	@ManyToMany(mappedBy = "roles")
-	private List<User> users;
+	@OneToMany
+	@JoinTable(
+		name = "user_role",
+		joinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") },
+		inverseJoinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id")})
+	private Set<User> users;
 
 	public Role() {
 	}
@@ -46,22 +52,14 @@ public class Role {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public List<User> getUsers() {
+	
+	public Set<User> getUsers() {
 		return users;
 	}
-
-	public void setUsers(List<User> users) {
+	
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
-
-	/*
-	 * eğer toString metoduna, users nesne değişkenini de eklemek istersem,
-	 * toString çağrıldığında hibernate bağırır. çünkü users nesne değişkeni
-	 * @ManyToMany ve @ManyToMany varsayılanda FetchType' ı LAZY dir. Yani, bir
-	 * role nesnesini veritabanından çekersem, users listesinin içi dolmaz. User
-	 * nesneleri veritabanında join ile bağlanıp getirilmez!!!
-	 */
 
 	@Override
 	public String toString() {

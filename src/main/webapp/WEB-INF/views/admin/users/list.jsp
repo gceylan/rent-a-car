@@ -29,11 +29,7 @@
 						<td>${ u.firstname }</td>
 						<td>${ u.lastname }</td>
 						<td>${ u.email }</td>
-						<td>
-							<c:forEach items="${ u.roles }" var="r">
-								<label>${ r.name }</label>
-							</c:forEach>
-						</td>
+						<td>${ u.role.name }</td>
 						<td>
 							<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 								<a class="blue" href="${ context }/admin/users/profil/${ u.username }">

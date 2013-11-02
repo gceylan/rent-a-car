@@ -1,15 +1,12 @@
 package com.gceylan.rentacar.domain;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -49,11 +46,11 @@ public class User {
 	private String email;
 
 	@NotNull
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role", 
-		joinColumns = { @JoinColumn(name = "user_id") }, 
-		inverseJoinColumns = { @JoinColumn(name = "role_id") })
-	private List<Role> roles;
+	@OneToOne
+	@JoinTable(name = "user_role",
+		joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") },
+		inverseJoinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") })
+	private Role role;
 
 	@Column(name = "enabled")
 	private boolean enabled = true;
@@ -115,12 +112,12 @@ public class User {
 		this.email = email;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
+	public Role getRole() {
+		return role;
 	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	public boolean isEnabled() {

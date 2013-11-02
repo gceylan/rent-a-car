@@ -23,5 +23,10 @@ public class LoginLogoutController {
 		model.addAttribute("error", true);
 		return "login";
 	}
+	
+	@RequestMapping(value = "/error/403", method = RequestMethod.GET)
+	public String accessDenied() {
+		return "error/403";
+	}
 
 }

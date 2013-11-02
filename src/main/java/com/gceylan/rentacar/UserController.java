@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gceylan.rentacar.domain.Role;
 import com.gceylan.rentacar.domain.User;
 import com.gceylan.rentacar.service.RoleService;
 import com.gceylan.rentacar.service.UserService;
@@ -52,9 +51,7 @@ public class UserController {
 			return model;
 		}
 		
-		for (Role r : user.getRoles()) {
-			r.setId(roleService.getRoleByName(r.getName()).getId());
-		}
+		user.getRole().setId(roleService.getRoleByName(user.getRole().getName()).getId());
 		
 		userService.addUser(user);
 		model.setViewName("redirect:/admin/users/list");
@@ -84,9 +81,7 @@ public class UserController {
 			return model;
 		}
 		
-		for (Role r : user.getRoles()) {
-			r.setId(roleService.getRoleByName(r.getName()).getId());
-		}
+		user.getRole().setId(roleService.getRoleByName(user.getRole().getName()).getId());
 		
 		userService.updateUser(user);
 		model.setViewName("redirect:/admin/users/list");

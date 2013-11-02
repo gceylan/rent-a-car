@@ -10,6 +10,8 @@
 		<security:form-login login-page="/login"
 			default-target-url="/admin"
 			authentication-failure-url="/loginfailed" />
+			
+		<security:access-denied-handler error-page="/error/403" />
 
 		<security:logout invalidate-session="true" 
 			logout-url="/logout"
@@ -17,11 +19,12 @@
 	</security:http>
 
 	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="gceylan" password="merhaba" authorities="ROLE_ADMIN" />
-			</security:user-service>
+		<security:authentication-provider user-service-ref="customUserDetailsService" >
+			<security:password-encoder hash="plaintext" />
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	<!-- A custom service where Spring will retrieve users and their corresponding access levels  -->
+ 	<bean id="customUserDetailsService" class="com.gceylan.rentacar.service.impl.CustomUserDetailsService" />
 
 </beans>
