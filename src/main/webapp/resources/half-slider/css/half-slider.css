@@ -1,0 +1,72 @@
+html,body {
+	height: 100%;
+}
+
+/* .carousel { */
+/* 	height:100%; */
+/* } */
+
+/* .item, */
+/* .active, */
+/* .carousel-inner { */
+/* 	height:100%; */
+/* } */
+
+/* .fill { */
+/* 	width:100%; */
+/* 	height:100%; */
+/* 	background-position: center; */
+/* 	background-size: cover; */
+/* } */
+.section {
+	margin: 50px 0;
+}
+
+.reservation {
+	background: #fff;
+	padding: 0;
+	position: relative;
+	margin: -380px 0px;
+}
+
+.reservation .reservation-area {
+	position: absolute;
+	top: 70px;
+	/* 	left: 12%; */
+	width: 88%;
+	z-index: 10;
+}
+
+.reservation .reservation-area .reservation-form {
+	background: #fff
+		url('http://responsivewebinc.com/premium/lenord/img/back-top.png')
+		repeat-x;
+	width: 500px;
+	padding: 20px;
+	box-shadow: 0 0 10px #777;
+}
+
+.reservation .reservation-area .reservation-form h4 {
+	margin-top: 0;
+	padding-top: 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+	color: #777;
+}
+
+.reservation .reservation-area .reservation-form .form {
+	border-bottom: 1px solid #fff;
+}
+
+.reservation-form .form .form-group label {
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.reservation-form .form .form-group input,.reservation-form .form .form-group textarea,.reservation-form .form button {
+	font-size: 13px;
+}
+
+footer {
+	margin: 50px 0;
+}

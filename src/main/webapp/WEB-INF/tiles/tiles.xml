@@ -109,6 +109,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/cars/new.jsp" />
 	</definition>
 	
+	<definition name="admin/cars/show" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Admin | Araç" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/cars/show.jsp" />
+	</definition>
+	
 	<definition name="admin/cars/list" extends="adminBaseTemplate">
 		<put-attribute name="title" value="Admin | Tüm Araçlar" />
 		<put-attribute name="body" value="/WEB-INF/views/admin/cars/list.jsp" />
@@ -122,6 +127,10 @@
 
 	<!-- home -->
 	<definition name="home" template="/WEB-INF/views/home.jsp">
+	</definition>
+	
+	<!-- client/index -->
+	<definition name="client/index" template="/WEB-INF/views/client/index.jsp">
 	</definition>
 	
 </tiles-definitions>

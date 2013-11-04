@@ -38,6 +38,14 @@ public class CarController {
 		return "redirect:/admin/cars/list";
 	}
 	
+	@RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
+	public String showCar(@PathVariable("id") Integer carId, ModelMap model) {
+		
+		model.addAttribute("car", carService.getCarById(carId));
+		
+		return "admin/cars/show";
+	}
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listAllCars(ModelMap model) {
 		
@@ -70,7 +78,14 @@ public class CarController {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteCar(@PathVariable("id") Integer carId) {
 		
-		carService.deleteCar(carId);
+		return "redirect:/admin/cars/list";
+	}
+	
+	@RequestMapping(value = "/available/{carId}/{value}", method = RequestMethod.GET)
+	public String isAvailable(@PathVariable("carId") Integer carId, 
+			@PathVariable("value") Integer value) {
+		
+		carService.isAvailable(carId, value);
 		
 		return "redirect:/admin/cars/list";
 	}

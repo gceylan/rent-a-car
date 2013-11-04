@@ -18,7 +18,8 @@
 					<th class="header">soyad <i class="icon-sort"></i></th>
 					<th class="header">email <i class="icon-sort"></i></th>
 					<th class="header">rol <i class="icon-sort"></i></th>
-					<th class="header">işlemler <i class="icon-sort"></i></th>
+					<th class="header">durum <i class="icon-sort"></i></th>
+					<th class="header">işlemler</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,7 +30,30 @@
 						<td>${ u.firstname }</td>
 						<td>${ u.lastname }</td>
 						<td>${ u.email }</td>
-						<td>${ u.role.name }</td>
+						<td>
+							<c:choose>
+								<c:when test="${ u.role.name eq 'Admin' }">
+									<span class="label label-primary">${ u.role.name }</span>
+								</c:when>
+								<c:otherwise>
+									<span class="label label-default">${ u.role.name }</span>
+								</c:otherwise>
+							</c:choose>
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${ u.enabled }">
+									<a href="#">
+										<span class="label label-success">Sisteme Girebilir</span>
+									</a>
+								</c:when>
+								<c:otherwise>
+									<span class="label label-danger">
+										<a href="#">Sisteme Giremez</a>
+									</span>
+								</c:otherwise>
+							</c:choose>
+						</td>
 						<td>
 							<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 								<a class="blue" href="${ context }/admin/users/profil/${ u.username }">

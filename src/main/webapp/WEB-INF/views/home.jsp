@@ -4,5 +4,6 @@
 
 <p>  The time on the server is ${serverTime}. </p>
 
-<a href="resources/sb-admin/index.html">sb-admin</a> | 
-<a href="resources/simple-sidebar/simple-sidebar.html">simple-sidebar</a>
+<a href="resources/sb-admin/index.html"> sb-admin </a> | 
+<a href="resources/simple-sidebar/simple-sidebar.html"> simple-sidebar </a> | 
+<a href="client"> go client page </a>

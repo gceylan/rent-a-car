@@ -37,6 +37,9 @@ public class Car {
 	@NotEmpty
 	@Column(name = "color")
 	private String color;
+	
+	@Column(name = "available")
+	private boolean available;
 
 	@NotEmpty
 	@Column(name = "owner")
@@ -100,6 +103,14 @@ public class Car {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+	
+	public boolean isAvailable() {
+		return available;
+	}
+	
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 
 	public String getOwner() {

@@ -16,6 +16,7 @@
 					<th class="header"> plaka <i class="icon-sort"></i></th>
 					<th class="header"> marka <i class="icon-sort"></i></th>
 					<th class="header"> model <i class="icon-sort"></i></th>
+					<th class="header"> araç durumu <i class="icon-sort"></i></th>
 					<th class="header"> Araç Sahibi <i class="icon-sort"></i></th>
 					<th class="header"> Email / Telefon <i class="icon-sort"></i></th>
 					<th class="header"> günlük fiyat <i class="icon-sort"></i></th>
@@ -29,11 +30,28 @@
 						<td>${ car.licensePlate }</td>
 						<td>${ car.brand }</td>
 						<td>${ car.model }</td>
+						<td>
+							<c:choose>
+								<c:when test="${ car.available }">
+									<a href="${ context }/admin/cars/available/${ car.id }/0">
+										<span class="label label-success">uygun</span>
+									</a>
+								</c:when>
+								<c:otherwise>
+									<span class="label label-danger">
+										<a href="${ context }/admin/cars/available/${ car.id }/1">uygun değil</a>
+									</span>
+								</c:otherwise>
+							</c:choose>
+						</td>
 						<td>${ car.owner }</td>
 						<td>${ car.ownerEmail } / ${ car.ownerPhone }</td>
 						<td>${ car.pricePerDay } TL</td>
 						<td>
 							<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+								<a class="blue" href="${ context }/admin/cars/show/${ car.id }">
+									<i class="icon-zoom-in bigger-130"></i>
+								</a>
 								<a class="green" href="${ context }/admin/cars/edit/${ car.id }">
 									<i class="icon-edit bigger-130"></i>
 								</a>

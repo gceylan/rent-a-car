@@ -14,6 +14,8 @@ public void addCar(Car car);
 	
 	public void deleteCar(Integer carId);
 	
+	public void isAvailable(Integer carId, Integer value);
+	
 	public Car getCarById(Integer carId);
 
 }

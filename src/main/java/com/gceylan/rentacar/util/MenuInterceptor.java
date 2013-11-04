@@ -121,6 +121,7 @@ public class MenuInterceptor implements HandlerInterceptor {
 				ArrayList<SubMenu> navCarSubMenus = new ArrayList<SubMenu>();
 				navCarSubMenus.add(new SubMenu("", "Yeni Bir Araç Ekle", "admin/cars/new"));
 				navCarSubMenus.add(new SubMenu("", "Araç Bilgilerini Güncelle", "admin/cars/edit"));
+				navCarSubMenus.add(new SubMenu("", "Araç Bilgilerini Görüntüle", "admin/cars/show"));
 				
 				Navigation navCars = new Navigation(cars, navCarSubMenus);
 				
@@ -176,27 +177,36 @@ public class MenuInterceptor implements HandlerInterceptor {
 								String shortDesc = "";
 								String desc = "";
 								
-								if (subMenuUrl.contains("/users/new")) {
-									shortDesc = "Yeni Kullanıcı Ekle";
-									desc = "Yeni Kullanıcı İçin Aşağıdaki Bilgileri Doldurun";
-								} else if (subMenuUrl.contains("/users/edit")) {
-									shortDesc = "Kullanıcı Güncelleniyor";
-									desc = "Kullanıcı Bilgilerini Değiştirebilirsiniz";
-								} else if (subMenuUrl.contains("/users/profil")) {
-									shortDesc = "Profil Detayları";
-									desc = "";
-								} else if (subMenuUrl.contains("/locations/new")) {
-									shortDesc = "Hizmet Noktası Ekle";
-									desc = "Hizmet Noktası için gerekli bilgileri doldurun";
-								} else if (subMenuUrl.contains("/locations/edit")) {
-									shortDesc = "Hizmet Noktası Güncelleniyor";
-									desc = "Hizmet Noktası Güncelleniyor";
-								} else if (subMenuUrl.contains("/cars/new")) {
-									shortDesc = "Yeni Bir Araç Ekle";
-									desc = "Yeni Araç Ekle";
-								} else if (subMenuUrl.contains("/cars/edit")) {
-									shortDesc = "Araç Güncelle";
-									desc = "Aracı Güncelle";
+								if (subMenuUrl.contains("/users")) {
+									if (subMenuUrl.contains("/new")) {
+										shortDesc = "Yeni Kullanıcı Ekle";
+										desc = "Yeni Kullanıcı İçin Aşağıdaki Bilgileri Doldurun";
+									} else if (subMenuUrl.contains("/edit")) {
+										shortDesc = "Kullanıcı Güncelleniyor";
+										desc = "Kullanıcı Bilgilerini Değiştirebilirsiniz";
+									} else if (subMenuUrl.contains("/profil")) {
+										shortDesc = "Profil Detayları";
+										desc = "Profil Ayarları";
+									}
+								} else if (subMenuUrl.contains("/locations")) {
+									if (subMenuUrl.contains("/new")) {
+										shortDesc = "Hizmet Noktası Ekle";
+										desc = "Hizmet Noktası için gerekli bilgileri doldurun";
+									} else if (subMenuUrl.contains("/edit")) {
+										shortDesc = "Hizmet Noktası Güncelleniyor";
+										desc = "Hizmet Noktası Güncelleniyor";
+									}
+								} else if (subMenuUrl.contains("/cars")) {
+									if (subMenuUrl.contains("/new")) {
+										shortDesc = "Yeni Bir Araç Ekle";
+										desc = "Yeni Araç Ekle";
+									} else if (subMenuUrl.contains("/edit")) {
+										shortDesc = "Araç Güncelle";
+										desc = "Aracı Güncelle";
+									} else if (subMenuUrl.contains("/show")) {
+										shortDesc = "Araç Görünüleniyor";
+										desc = "Araç Görünüleniyor";
+									}
 								}
 								
 								selectedNav.getMenu().setShortDescription(shortDesc);

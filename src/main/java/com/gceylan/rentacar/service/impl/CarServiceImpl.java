@@ -42,6 +42,13 @@ public class CarServiceImpl implements CarService {
 		return carDao.getCarById(carId);
 	}
 	
+	@Transactional
+	public void isAvailable(Integer carId, Integer value) {
+		Car c = getCarById(carId);
+		c.setAvailable((value == 0) ? false : true);
+		carDao.updateCar(c);
+	}
+	
 	public void setCarDao(CarDao carDao) {
 		this.carDao = carDao;
 	}
