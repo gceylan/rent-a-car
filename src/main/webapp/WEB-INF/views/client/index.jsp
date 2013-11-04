@@ -43,7 +43,7 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="client">Classic Rent A Car</a>
+				<a class="navbar-brand" href="./">Classic Rent A Car</a>
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
@@ -98,17 +98,20 @@
 					<div class="reservation-area">
 						<div class="reservation-form">
 							<h4>Online Rezervasyon</h4>
-							<form action="" class="form-horizontal" role="form">
+							<form:form acceptCharset="ISO-8859-9" action="search" commandName="rental" cssClass="form-horizontal" method="post">
 								<fieldset>
 									<div class="form-group">
 										<label class="col-md-3 control-label" for="selectbasic">Alış Yeri</label>
 										<div class="col-md-8">
-											<select id="selectbasic" name="selectbasic" class="selectpicker form-control" data-live-search="true" data-size="5" style="display: none;">
-												<option>Alış Yerini Seçin</option>
-												<c:forEach items="${ locations }" var="loc">
-													<option>${ loc.name }</option>
+<%-- 											<form:select path="pickupLocation" cssClass="selectpicker form-control" data-live-search="true" data-size="5" style="display: none;"> --%>
+<%-- 												<form:option value="NONE" label="--- Alış Yerini Seçin ---"/> --%>
+<%-- 												<form:options items="${locations}" itemValue="id" itemLabel="name" /> --%>
+<%-- 											</form:select> --%>
+											<select id="pickupLocationId" name="pickupLocationId" class="selectpicker form-control" data-live-search="true" data-size="5" style="display: none;">
+												<option value="-1">Alış Yerini Seçin</option>
+												<c:forEach items="${ locations }" var="location">
+													<option value="${ location.id }">${ location.name }</option>
 												</c:forEach>
-												<!-- example data -->
 												<optgroup label="Samsun">
 													<option>Yeşilyurt</option>
 													<option>Büyük Otel</option>
@@ -122,7 +125,7 @@
 											</select>
 										</div>
 									</div>
-
+									
 									<div class="form-group">
 										<label for="dtp_input1" class="col-md-3 control-label">Alış Tarihi</label>
 										<div class="input-group date form_datetime col-md-8" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
@@ -130,17 +133,17 @@
 											<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 										</div>
-										<input type="hidden" id="dtp_input1" value="" /><br />
+										<input type="hidden" id="dtp_input1" name="pickupDateString" value="" /><br />
 									</div>
+									
 									<div class="form-group">
 										<label class="col-md-3 control-label">Teslim Yeri</label>
 										<div class="col-md-8">
-											<select id="selectbasic" name="selectbasic" class="selectpicker form-control" data-live-search="true" data-size="5" style="display: none;">
-												<option>Teslim Yerini Seçin</option>
-												<c:forEach items="${ locations }" var="loc">
-													<option>${ loc.name }</option>
+											<select id="returnLocationId" name="returnLocationId" class="selectpicker form-control" data-live-search="true" data-size="5" style="display: none;">
+												<option value="-1">Teslim Yerini Seçin</option>
+												<c:forEach items="${ locations }" var="location">
+													<option value="${ location.id }">${ location.name }</option>
 												</c:forEach>
-												<!-- example data -->
 												<optgroup label="Samsun">
 													<option>Yeşilyurt</option>
 													<option>Büyük Otel</option>
@@ -161,13 +164,13 @@
 											<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 										</div>
-										<input type="hidden" id="dtp_input2" value="" /><br />
+										<input type="hidden" id="dtp_input2" name="returnDateString" value="" /><br />
 									</div>
 
-									<button type="submit" class="btn btn-info"> Ara </button>
-									<button type="reset" class="btn btn-default"> Sıfırla </button>
+									<input type="submit" class="btn btn-info" value="Ara">
+									<input type="reset" class="btn btn-default" value="Sıfırla">
 								</fieldset>
-							</form>
+							</form:form>
 						</div>
 					</div>
 				</div>
@@ -193,6 +196,22 @@
 				</ul>
 			</div>
 		</div>
+		
+<!-- 		<div class="row section"> -->
+<%-- 			<form:form method="post" commandName="rental" action="search"> --%>
+<!-- 				<select name="pickupLocationId"> -->
+<%-- 					<c:forEach items="${ locations }" var="l" > --%>
+<%-- 						<option value="${ l.id }">${ l.name }</option> --%>
+<%-- 					</c:forEach> --%>
+<!-- 				</select> -->
+				
+				
+<%-- 				<form:select path="pickupLocation"> --%>
+<%-- 					<form:options items="${ locations }" itemValue="id" itemLabel="name" /> --%>
+<%-- 				</form:select> --%>
+<!-- 				<input type="submit" name="Submit" /> -->
+<%-- 			</form:form> --%>
+<!-- 		</div> -->
 
 		<hr>
 

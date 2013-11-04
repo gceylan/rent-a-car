@@ -124,10 +124,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/cars/edit.jsp" />
 	</definition>
 	<!-- end cars -->
-
-	<!-- home -->
-	<definition name="home" template="/WEB-INF/views/home.jsp">
-	</definition>
 	
 	<!-- client/index -->
 	<definition name="client/index" template="/WEB-INF/views/client/index.jsp">
