@@ -1,7 +1,14 @@
 package com.gceylan.rentacar.util;
 
-public class SubMenu {
+import java.io.Serializable;
 
+public class SubMenu implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 295740335981542180L;
+	
 	private String icon;
 	private String name;
 	private String url;

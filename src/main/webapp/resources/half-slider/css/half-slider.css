@@ -26,12 +26,12 @@ html,body {
 	background: #fff;
 	padding: 0;
 	position: relative;
-	margin: -380px 0px;
+	margin: -400px 0px;
 }
 
 .reservation .reservation-area {
 	position: absolute;
-	top: 70px;
+	top: 40px;
 	/* 	left: 12%; */
 	width: 88%;
 	z-index: 10;
@@ -39,7 +39,7 @@ html,body {
 
 .reservation .reservation-area .reservation-form {
 	background: #fff
-		url('http://responsivewebinc.com/premium/lenord/img/back-top.png')
+		url('../back-top.png')
 		repeat-x;
 	width: 500px;
 	padding: 20px;

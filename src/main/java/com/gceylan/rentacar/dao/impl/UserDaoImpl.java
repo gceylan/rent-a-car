@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gceylan.rentacar.dao.UserDao;
+import com.gceylan.rentacar.domain.Branch;
 import com.gceylan.rentacar.domain.User;
 
 @Repository
@@ -46,6 +47,21 @@ public class UserDaoImpl implements UserDao {
 		return (User) getSession().createCriteria(User.class)
 				.add(Restrictions.eq("username", username))
 				.uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<User> getAllManagers(Branch branch) {
+		return (List<User>) getSession().createCriteria(User.class)
+				.add(Restrictions.eq("branch", branch))
+				.add(Restrictions.eq("role.id", 2))
+				.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<User> getAllEmployees(Branch branch) {
+		return (List<User>) getSession().createCriteria(User.class)
+				.add(Restrictions.eq("branch", branch))
+				.list();
 	}
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {

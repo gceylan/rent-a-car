@@ -1,9 +1,15 @@
 package com.gceylan.rentacar.util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Menu {
+public class Menu implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8471234441898757366L;
+	
 	private String icon;
 	private String name;
 	private String shortDescription;

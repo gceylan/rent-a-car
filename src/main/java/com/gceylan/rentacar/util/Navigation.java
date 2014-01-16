@@ -1,9 +1,14 @@
 package com.gceylan.rentacar.util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Navigation {
+public class Navigation implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Menu menu;
 	private ArrayList<SubMenu> subMenus;
 

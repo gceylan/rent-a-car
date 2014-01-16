@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
@@ -12,27 +10,33 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.gceylan.rentacar" />
 	<mvc:annotation-driven />
-
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 
 	<!-- Apache Tiles -->
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass">
 			<value>
 				org.springframework.web.servlet.view.tiles2.TilesView
 			</value>
 		</property>
 	</bean>
-	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">
 			<list>
 				<value>/WEB-INF/tiles/tiles.xml</value>
 			</list>
 		</property>
 	</bean>
-	
+
+	<!-- upload -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 	<!-- db-properties/database.properties config file -->
-	<bean id="dbProps" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean id="dbProps"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="/WEB-INF/db-properties/database.properties" />
 	</bean>
 
@@ -43,9 +47,14 @@
 		<property name="password" value="${database.password}" />
 	</bean>
 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.gceylan.rentacar.domain" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.gceylan.rentacar.domain</value>
+			</list>
+		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
@@ -54,23 +63,57 @@
 				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
 				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
 				<prop key="hibernate.archive.autodetection">${hibernate.archive.autodetection}</prop>
+				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+				<prop key="hibernate.connection.useUnicode">true</prop>
 			</props>
 		</property>
 	</bean>
 
+	<mvc:interceptors>
+		<bean class="com.gceylan.rentacar.util.MenuInterceptor" />
+	</mvc:interceptors>
+
 	<tx:annotation-driven transaction-manager="hibernateTransactionManager" />
-	<bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<bean id="hibernateTransactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
-	<mvc:interceptors>
-  		<bean class="com.gceylan.rentacar.util.MenuInterceptor" />
-	</mvc:interceptors>
-	
+
 	<!-- message source -->
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
 		<property name="defaultEncoding" value="ISO-8859-1" />	<!-- ISO-8859-1 -->
 	</bean>
+	
+	<!-- mail sender -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <property name="host" value="smtp.gmail.com"/>
+	    <property name="port" value="587"/>
+	    <property name="username" value="gokhan.ceylan@bil.omu.edu.tr"/>
+	    <property name="password" value="*****************"/>
+	    <property name="javaMailProperties">
+	        <props>
+	        	<!-- Use SMTP transport protocol -->
+	            <prop key="mail.transport.protocol">smtp</prop>
+	            <!-- Use SMTP-AUTH to authenticate to SMTP server -->
+	            <prop key="mail.smtp.auth">true</prop>
+	            <!-- Use TLS to encrypt communication with SMTP server -->
+	            <prop key="mail.smtp.starttls.enable">true</prop>
+	            <prop key="mail.debug">true</prop>
+	        </props>
+	    </property>
+	</bean>
+	
+	<bean id="alertMailMessage" class="org.springframework.mail.SimpleMailMessage">
+	    <property name="from">	        
+	        <value>gokhan.ceylan@bil.omu.edu.tr</value>
+	    </property>
+	    <property name="to">	        
+	        <value>gokhan.ceylan@bil.omu.edu.tr</value>
+	    </property>
+	    <property name="subject" value="Alert - Exception occurred"/>
+	</bean>
+	<!-- end mail sender -->
 
 </beans>

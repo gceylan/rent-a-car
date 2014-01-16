@@ -5,12 +5,19 @@
 <tiles-definitions>
 	
 	<!-- Admin stuff -->
-
-	<definition name="adminBaseTemplate" template="/WEB-INF/views/admin/template/layout.jsp">
+	<definition name="adminBaseTemplate" template="/WEB-INF/views/template/layout.jsp">
 		<put-attribute name="title" value=""/>
-		<put-attribute name="header" value="/WEB-INF/views/admin/template/header.jsp"/>
-		<put-attribute name="menu" value="/WEB-INF/views/admin/template/menu.jsp"/>
-		<put-attribute name="sub-menu" value="/WEB-INF/views/admin/template/sub-menu.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+		<put-attribute name="sub-menu" value="/WEB-INF/views/template/sub-menu.jsp"/>
+		<put-attribute name="body" value=""/>
+	</definition>
+	
+	<definition name="adminFooTableTemplate" template="/WEB-INF/views/template/foo-table-layout.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+		<put-attribute name="sub-menu" value="/WEB-INF/views/template/sub-menu.jsp"/>
 		<put-attribute name="body" value=""/>
 	</definition>
 	
@@ -55,12 +62,38 @@
 	</definition>
 	
 	<!-- login -->
-	<definition name="login" template="/WEB-INF/views/login.jsp">
-	</definition>
+	<definition name="login" template="/WEB-INF/views/login.jsp"></definition>
 	
 	<!-- access denied -->
-	<definition name="error/403" template="/WEB-INF/views/error/403.jsp">
+	<definition name="error/403" template="/WEB-INF/views/error/403.jsp"></definition>
+	
+	<!-- page not found -->
+	<definition name="error/404" template="/WEB-INF/views/error/404.jsp"></definition>
+	
+	<!-- application error -->
+	<definition name="error/app-error" template="/WEB-INF/views/error/app-error.jsp"></definition>
+	
+	<!-- admin/branchs/... -->
+	<definition name="admin/branchs/list" extends="adminBaseTemplate">
+		<put-attribute name="title" value="All Branchs | Admin" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/branchs/list.jsp" />
 	</definition>
+	
+	<definition name="admin/branchs/new" extends="adminBaseTemplate">
+		<put-attribute name="title" value="New Branch | Admin" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/branchs/new.jsp" />
+	</definition>
+	
+	<definition name="admin/branchs/edit" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Edit Branch | Admin" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/branchs/edit.jsp" />
+	</definition>
+	
+	<definition name="admin/branchs/show" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Show Branch | Admin" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/branchs/show.jsp" />
+	</definition>
+	<!-- end admin/branchs/... -->
 	
 	<!-- list all user page -->
 	<definition name="admin/users/list" extends="adminBaseTemplate">
@@ -86,47 +119,146 @@
 		<put-attribute name="body" value="/WEB-INF/views/admin/users/profil.jsp" />
 	</definition>
 	
-	<!-- locations -->
-	<definition name="admin/locations/new" extends="adminBaseTemplate">
-		<put-attribute name="title" value="Admin | Yeni Hizmet Noktası Ekle" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/locations/new.jsp" />
+	<!-- For Branch -->
+	<definition name="branch/main" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Şube Paneli" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/main.jsp" />
 	</definition>
 	
-	<definition name="admin/locations/list" extends="adminBaseTemplate">
-		<put-attribute name="title" value="Admin | Hizmet Noktaları" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/locations/list.jsp" />
+	<definition name="branch/charts" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Şube | Charts" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/charts.jsp" />
 	</definition>
 	
-	<definition name="admin/locations/edit" extends="adminBaseTemplate">
-		<put-attribute name="title" value="Admin | Hizmet Noktasını Güncelle" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/locations/edit.jsp" />
-	</definition>
-	<!-- end locations -->
-	
-	<!-- cars -->
-	<definition name="admin/cars/new" extends="adminBaseTemplate">
-		<put-attribute name="title" value="Admin | Yeni Araç Ekle" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/cars/new.jsp" />
+	<definition name="branch/tables" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Şube | Tables" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/tables.jsp" />
 	</definition>
 	
-	<definition name="admin/cars/show" extends="adminBaseTemplate">
-		<put-attribute name="title" value="Admin | Araç" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/cars/show.jsp" />
+	<definition name="branch/forms" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Şube | Forms" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/forms.jsp" />
 	</definition>
 	
-	<definition name="admin/cars/list" extends="adminBaseTemplate">
-		<put-attribute name="title" value="Admin | Tüm Araçlar" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/cars/list.jsp" />
+	<definition name="branch/typography" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Şube | Typography" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/typography.jsp" />
 	</definition>
 	
-	<definition name="admin/cars/edit" extends="adminBaseTemplate">
-		<put-attribute name="title" value="Admin | Araç Bilgisi Güncelle" />
-		<put-attribute name="body" value="/WEB-INF/views/admin/cars/edit.jsp" />
-	</definition>
-	<!-- end cars -->
-	
-	<!-- client/index -->
-	<definition name="client/index" template="/WEB-INF/views/client/index.jsp">
+	<definition name="branch/bootstrap-elements" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Şube | Bootstrap Elements" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/bootstrap-elements.jsp" />
 	</definition>
 	
+	<definition name="branch/bootstrap-grid" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Şube | Bootstrap Grid" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/bootstrap-grid.jsp" />
+	</definition>
+	
+	<definition name="branch/blank-page" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Rent A Car | Şube | Blank Page" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/blank-page.jsp" />
+	</definition>
+	
+	<!-- branch/employees/ -->
+	<definition name="branch/employees/new" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Yeni Çalışan Ekle" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/employees/new.jsp" />
+	</definition>
+	
+	<definition name="branch/employees/list" extends="adminFooTableTemplate">
+		<put-attribute name="title" value="Şube | Çalışanlar" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/employees/list.jsp" />
+	</definition>
+	
+	<definition name="branch/employees/edit" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Çalışan Bilgilerini Güncelle" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/employees/edit.jsp" />
+	</definition>
+	
+	<definition name="branch/employees/profile" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Çalışan Profil" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/employees/profile.jsp" />
+	</definition>
+	
+	<definition name="branch/employees/settings" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Çalışan Ayarlar" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/employees/settings.jsp" />
+	</definition>
+	<!-- end branch/employees/ -->
+	
+	<!-- branch/cars/... -->
+	<definition name="branch/cars/new" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Yeni Araç Ekle" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/cars/new.jsp" />
+	</definition>
+	
+	<definition name="branch/cars/show" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Araç" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/cars/show.jsp" />
+	</definition>
+	
+	<definition name="branch/cars/list" extends="adminFooTableTemplate">
+		<put-attribute name="title" value="Şube | Tüm Araçlar" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/cars/list.jsp" />
+	</definition>
+	
+	<definition name="branch/cars/edit" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Araç Bilgisi Güncelle" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/cars/edit.jsp" />
+	</definition>
+	<!-- end branch/cars/... -->
+	
+	<!-- branch/service-points/... -->
+	<definition name="branch/service-points/new" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Yeni Hizmet Noktası Ekle" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/service-points/new.jsp" />
+	</definition>
+	
+	<definition name="branch/service-points/list" extends="adminFooTableTemplate">
+		<put-attribute name="title" value="Şube | Hizmet Noktaları" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/service-points/list.jsp" />
+	</definition>
+	
+	<definition name="branch/service-points/edit" extends="adminBaseTemplate">
+		<put-attribute name="title" value="Şube | Hizmet Noktasını Güncelle" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/service-points/edit.jsp" />
+	</definition>
+	<!-- end branch/service-points/... -->
+	
+	<!-- branch/reservations -->
+	<definition name="branch/reservations/not-confirmed" extends="adminFooTableTemplate">
+		<put-attribute name="title" value="Şube | Rezervasyonlar" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/reservations/not-confirmed-reservations.jsp" />
+	</definition>
+	
+	<definition name="branch/reservations/confirmed" extends="adminFooTableTemplate">
+		<put-attribute name="title" value="Şube | Rezervasyonlar" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/reservations/confirmed-reservations.jsp" />
+	</definition>
+	
+	<definition name="branch/reservations/completed" extends="adminFooTableTemplate">
+		<put-attribute name="title" value="Şube | Rezervasyonlar" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/reservations/completed-reservations.jsp" />
+	</definition>
+	
+	<definition name="branch/reservations/now-doing" extends="adminFooTableTemplate">
+		<put-attribute name="title" value="Şube | Rezervasyonlar" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/reservations/now-doing.jsp" />
+	</definition>
+	
+	<definition name="branch/reservations/edit" extends="adminFooTableTemplate">
+		<put-attribute name="title" value="Şube | Rezervasyonlar | Edit" />
+		<put-attribute name="body" value="/WEB-INF/views/branch/reservations/edit.jsp" />
+	</definition>
+	<!-- end branch/reservations -->
+	
+	<!-- client/main -->
+	<definition name="client/main" template="/WEB-INF/views/client/main.jsp"></definition>
+	
+	<!-- client/car-select -->
+	<definition name="client/car-select" template="/WEB-INF/views/client/car-select.jsp"></definition>
+	
+	<!-- client/customer-information -->
+	<definition name="client/customer-information" template="/WEB-INF/views/client/customer-information.jsp"></definition>
 </tiles-definitions>

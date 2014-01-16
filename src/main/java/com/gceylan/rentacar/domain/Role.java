@@ -1,14 +1,9 @@
 package com.gceylan.rentacar.domain;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,14 +17,7 @@ public class Role {
 
 	@Column(name = "name")
 	private String name;
-
-	@OneToMany
-	@JoinTable(
-		name = "user_role",
-		joinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") },
-		inverseJoinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id")})
-	private Set<User> users;
-
+	
 	public Role() {
 	}
 
@@ -51,14 +39,6 @@ public class Role {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public Set<User> getUsers() {
-		return users;
-	}
-	
-	public void setUsers(Set<User> users) {
-		this.users = users;
 	}
 
 	@Override

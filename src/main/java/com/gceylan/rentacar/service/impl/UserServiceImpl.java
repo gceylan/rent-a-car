@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gceylan.rentacar.dao.UserDao;
+import com.gceylan.rentacar.domain.Branch;
 import com.gceylan.rentacar.domain.User;
 import com.gceylan.rentacar.service.UserService;
 
@@ -44,6 +45,16 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public User getUserByUsername(String username) {
 		return userDao.getUserByUsername(username);
+	}
+	
+	@Transactional
+	public List<User> getAllManagers(Branch branch) {
+		return userDao.getAllManagers(branch);
+	}
+	
+	@Transactional
+	public List<User> getAllEmployees(Branch branch) {
+		return userDao.getAllEmployees(branch);
 	}
 	
 	public void setUserDao(UserDao userDao) {

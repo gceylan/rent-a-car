@@ -2,6 +2,7 @@ package com.gceylan.rentacar.dao;
 
 import java.util.List;
 
+import com.gceylan.rentacar.domain.Branch;
 import com.gceylan.rentacar.domain.User;
 
 public interface UserDao {
@@ -17,5 +18,9 @@ public interface UserDao {
 	public User getUserById(Integer userId);
 	
 	public User getUserByUsername(String username);
+	
+	public List<User> getAllManagers(Branch branch);
+	
+	public List<User> getAllEmployees(Branch branch);
 
 }

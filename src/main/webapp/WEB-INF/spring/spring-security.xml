@@ -5,17 +5,33 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<security:http auto-config="true" use-expressions="true">
+		<!-- şube çalışanı -->
+		<security:intercept-url pattern="/branch*" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/*" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/employees/list" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/employees/profile/*" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/employees/settings/*" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/cars/list" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/service-points/list" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/alerts" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/not-confirmed" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/json-not-confirmed" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/confirmed" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/json-confirmed" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/now-doing" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/json-now-doing" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/completed" access="hasRole('ROLE_VISITOR')" />
+		<security:intercept-url pattern="/branch/reservations/json-completed" access="hasRole('ROLE_VISITOR')" />
+		
+		<!-- admin, şube müdürü -->
 		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-
-		<security:form-login login-page="/login"
-			default-target-url="/admin"
-			authentication-failure-url="/loginfailed" />
+		<security:intercept-url pattern="/branch/**" access="hasRole('ROLE_USER')" />
+		
+		<security:form-login login-page="/login" authentication-failure-url="/loginfailed" />
 			
 		<security:access-denied-handler error-page="/error/403" />
 
-		<security:logout invalidate-session="true" 
-			logout-url="/logout"
-			logout-success-url="/login" />
+		<security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/login" />
 	</security:http>
 
 	<security:authentication-manager>

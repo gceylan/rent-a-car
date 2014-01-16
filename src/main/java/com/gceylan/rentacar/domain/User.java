@@ -1,12 +1,13 @@
 package com.gceylan.rentacar.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -46,10 +47,7 @@ public class User {
 	private String email;
 
 	@NotNull
-	@OneToOne
-	@JoinTable(name = "user_role",
-		joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") },
-		inverseJoinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") })
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	private Role role;
 
 	@Column(name = "enabled")
@@ -63,6 +61,10 @@ public class User {
 
 	@Column(name = "credentials_non_expired")
 	private boolean credentialsNonExpired = true;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "branch_id", nullable = true)
+	private Branch branch;
 
 	public Integer getId() {
 		return id;
@@ -115,7 +117,7 @@ public class User {
 	public Role getRole() {
 		return role;
 	}
-	
+
 	public void setRole(Role role) {
 		this.role = role;
 	}
@@ -150,6 +152,14 @@ public class User {
 
 	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
 		this.credentialsNonExpired = credentialsNonExpired;
+	}
+
+	public Branch getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
 	}
 
 	@Override

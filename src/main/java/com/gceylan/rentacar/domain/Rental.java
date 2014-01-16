@@ -1,5 +1,6 @@
 package com.gceylan.rentacar.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -13,59 +14,82 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "rental")
-public class Rental {
+public class Rental implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
 	private Integer id;
-	
+
 	@Column(name = "reservation_code")
 	private String reservationCode;
-	
-	@Temporal(TemporalType.DATE)
+
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "reservation_date")
 	private Date reservationDate;
-	
-	@Temporal(TemporalType.DATE)
+
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "pickup_date")
 	private Date pickupDate;
-	
-	@Temporal(TemporalType.DATE)
+
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "return_date")
 	private Date returnDate;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "pickup_location_id")
-	private Location pickupLocation;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "return_location_id")
-	private Location returnLocation;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
+
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "pickup_sp_id")
+	private ServicePoint pickupLocation;
+
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "pickup_sp_branch_id")
+	private Branch pickupLocationBranch;
+
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "return_sp_id")
+	private ServicePoint returnLocation;
+
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "return_sp_branch_id")
+	private Branch returnLocationBranch;
+
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "car_id")
 	private Car car;
-	
+
 	@Column(name = "rent_pay")
 	private float rentPay;
-	
+
 	@Column(name = "confirmed")
-	private boolean confirmed;
-	
+	private boolean confirmed = false;
+
+	@Column(name = "completed")
+	private boolean completed = false;
+
 	@Column(name = "customer_name")
 	private String customerName;
-	
+
 	@Column(name = "customer_surname")
 	private String customerSurname;
-	
+
 	@Column(name = "customer_phone")
 	private String customerPhone;
-	
+
 	@Column(name = "customer_email")
 	private String customerEmail;
+
+	@Column(name = "address_detail")
+	private String addressDetail;
 
 	public Integer getId() {
 		return id;
@@ -107,20 +131,36 @@ public class Rental {
 		this.returnDate = returnDate;
 	}
 
-	public Location getPickupLocation() {
+	public ServicePoint getPickupLocation() {
 		return pickupLocation;
 	}
 
-	public void setPickupLocation(Location pickupLocation) {
+	public void setPickupLocation(ServicePoint pickupLocation) {
 		this.pickupLocation = pickupLocation;
 	}
 
-	public Location getReturnLocation() {
+	public Branch getPickupLocationBranch() {
+		return pickupLocationBranch;
+	}
+
+	public void setPickupLocationBranch(Branch pickupLocationBranch) {
+		this.pickupLocationBranch = pickupLocationBranch;
+	}
+
+	public ServicePoint getReturnLocation() {
 		return returnLocation;
 	}
 
-	public void setReturnLocation(Location returnLocation) {
+	public void setReturnLocation(ServicePoint returnLocation) {
 		this.returnLocation = returnLocation;
+	}
+
+	public Branch getReturnLocationBranch() {
+		return returnLocationBranch;
+	}
+
+	public void setReturnLocationBranch(Branch returnLocationBranch) {
+		this.returnLocationBranch = returnLocationBranch;
 	}
 
 	public Car getCar() {
@@ -145,6 +185,14 @@ public class Rental {
 
 	public void setConfirmed(boolean confirmed) {
 		this.confirmed = confirmed;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
 	}
 
 	public String getCustomerName() {
@@ -177,6 +225,26 @@ public class Rental {
 
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
+	}
+
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+
+	@Override
+	public String toString() {
+		return "Rental [id=" + id + ", reservationCode=" + reservationCode
+				+ ", reservationDate=" + reservationDate + ", pickupDate="
+				+ pickupDate + ", returnDate=" + returnDate + ", car=" + car
+				+ ", rentPay=" + rentPay + ", confirmed=" + confirmed
+				+ ", completed=" + completed + ", customerName=" + customerName
+				+ ", customerSurname=" + customerSurname + ", customerPhone="
+				+ customerPhone + ", customerEmail=" + customerEmail
+				+ ", addressDetail=" + addressDetail + "]";
 	}
 
 }
